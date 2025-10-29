@@ -96,12 +96,66 @@ function iniciarCarrusel() {
                 left: (currentSlide - 1) * slideWidth,
                 behavior: 'smooth'
             });
+            // Actualizar el fondo del hero al cambiar el slide automáticamente
+            try { setHeroToSlideIndex(currentSlide); } catch (e) { /* noop */ }
         }
     }, 5000); // Cambiar cada 5 segundos
+}
+
+// --- Funciones para actualizar el fondo del hero con blur ---
+function updateHeroBackground(imageUrl) {
+    const bg = document.querySelector('.hero-bg-image');
+    if (!bg) return;
+    // Evitar recargas innecesarias
+    const current = bg.style.backgroundImage || '';
+    const newVal = `url('${imageUrl}')`;
+    if (current.indexOf(imageUrl) !== -1) return;
+    bg.style.backgroundImage = newVal;
+}
+
+function getSlideIndexFromHash() {
+    const h = (location.hash || '').replace('#', '');
+    if (!h) return null;
+    const match = h.match(/slide(\d+)/);
+    if (match) return parseInt(match[1], 10);
+    return null;
+}
+
+function setHeroToSlideIndex(index) {
+    if (!index) return;
+    const idx = Math.max(1, Math.min(4, index));
+    const juego = catalogoJuegos[idx - 1];
+    if (juego && juego.imagen) {
+        updateHeroBackground(juego.imagen);
+    } else {
+        // Fallback: intentar leer la imagen del DOM
+        const slide = document.querySelector(`#slide${idx}`);
+        const img = slide ? slide.querySelector('img') : null;
+        if (img && img.src) updateHeroBackground(img.src);
+    }
 }
 
 // Inicializar la aplicación
 document.addEventListener('DOMContentLoaded', () => {
     cargarJuegos();
     iniciarCarrusel();
+
+    // Inicializar el fondo del hero según el hash (o slide 1 por defecto)
+    const initialIdx = getSlideIndexFromHash() || 1;
+    setHeroToSlideIndex(initialIdx);
+
+    // Actualizar fondo cuando cambia el hash (prev/next usando anchors)
+    window.addEventListener('hashchange', () => {
+        const idx = getSlideIndexFromHash();
+        if (idx) setHeroToSlideIndex(idx);
+    });
+
+    // También actualizar fondo cuando la posición de scroll del carrusel cambie por resize
+    window.addEventListener('resize', () => {
+        const carousel = document.getElementById('games-carousel');
+        if (!carousel) return;
+        const slideWidth = carousel.offsetWidth || 1;
+        const index = Math.round(carousel.scrollLeft / slideWidth) + 1;
+        setHeroToSlideIndex(index);
+    });
 });

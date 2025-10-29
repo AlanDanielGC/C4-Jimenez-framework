@@ -41,18 +41,26 @@
     </div>
 
     <!-- Hero Section with Carousel -->
-    <div class="hero min-h-[70vh] bg-base-200">
+    <div class="hero min-h-[70vh] bg-base-500 relative overflow-hidden">
+        <!-- Fondo dinámico difuminado basado en el slide actual -->
+        <div id="hero-bg" aria-hidden="true" class="absolute inset-0 -z-10">
+            <div class="hero-bg-image w-full h-full bg-center bg-cover transition-all duration-500"></div>
+        </div>
         <div class="hero-content flex-col lg:flex-row-reverse gap-8 max-w-7xl">
-            <div class="carousel w-full max-w-2xl rounded-box shadow-xl" id="games-carousel">
+            <div class="carousel w-full max-w-3xl rounded-box shadow-2xl" id="games-carousel">
                 <div id="slide1" class="carousel-item relative w-full">
-                    <div class="card bg-base-100 w-full">
-                        <figure class="px-4 pt-4">
-                            <img src="assets/game1.jpg" class="rounded-xl h-[300px] w-full object-cover" alt="Juego 1" />
+                    <div class="card w-full bg-base-100 transform transition-all duration-300 hover:scale-[1.02]">
+                        <figure class="relative h-[400px] overflow-hidden">
+                            <img src="assets/game1.jpg" class="w-full h-full object-cover transition-transform duration-700" alt="Juego 1" />
                         </figure>
-                        <div class="card-body">
-                            <h2 class="card-title">The Last Adventure</h2>
-                            <p>¡El juego más vendido del año!</p>
-                            <div class="badge badge-secondary">Aventura</div>
+                        <div class="card-body -mt-20 relative z-10">
+                            <h2 class="card-title text-2xl font-bold text-primary-content">Celeste</h2>
+                            <br>
+                            <p>Escala y supera tus miedos</p>
+                            <div class="flex gap-2 mt-2">
+                                <div class="badge badge-primary">Plataformas</div>
+                                <div class="badge badge-secondary">Indie</div>
+                            </div>
                         </div>
                     </div>
                     <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -61,14 +69,17 @@
                     </div>
                 </div>
                 <div id="slide2" class="carousel-item relative w-full">
-                    <div class="card bg-base-100 w-full">
-                        <figure class="px-4 pt-4">
-                            <img src="assets/game2.jpg" class="rounded-xl h-[300px] w-full object-cover" alt="Juego 2" />
+                    <div class="card w-full bg-base-100 transform transition-all duration-300 hover:scale-[1.02]">
+                        <figure class="relative h-[400px] overflow-hidden">
+                            <img src="assets/game2.jpg" class="w-full h-full object-cover transition-transform duration-700" alt="Juego 2" />
                         </figure>
-                        <div class="card-body">
-                            <h2 class="card-title">Space Warriors</h2>
+                        <div class="card-body -mt-20 relative z-10">
+                            <h2 class="card-title text-2xl font-bold text-primary-content">Space Warriors</h2>
+                            <br>
                             <p>¡La mejor experiencia espacial!</p>
-                            <div class="badge badge-secondary">Acción</div>
+                            <div class="flex gap-2 mt-2">
+                                <div class="badge badge-primary">Acción</div>
+                            </div>
                         </div>
                     </div>
                     <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -77,14 +88,17 @@
                     </div>
                 </div>
                 <div id="slide3" class="carousel-item relative w-full">
-                    <div class="card bg-base-100 w-full">
-                        <figure class="px-4 pt-4">
-                            <img src="assets/game3.jpg" class="rounded-xl h-[300px] w-full object-cover" alt="Juego 3" />
+                    <div class="card w-full bg-base-100 transform transition-all duration-300 hover:scale-[1.02]">
+                        <figure class="relative h-[400px] overflow-hidden">
+                            <img src="assets/game3.jpg" class="w-full h-full object-cover transition-transform duration-700" alt="Juego 3" />
                         </figure>
-                        <div class="card-body">
-                            <h2 class="card-title">Racing Pro</h2>
+                        <div class="card-body -mt-20 relative z-10">
+                            <h2 class="card-title text-2xl font-bold text-primary-content">Racing Pro</h2>
+                            <br>
                             <p>¡Velocidad sin límites!</p>
-                            <div class="badge badge-secondary">Deportes</div>
+                            <div class="flex gap-2 mt-2">
+                                <div class="badge badge-primary">Deportes</div>
+                            </div>
                         </div>
                     </div>
                     <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -93,14 +107,17 @@
                     </div>
                 </div>
                 <div id="slide4" class="carousel-item relative w-full">
-                    <div class="card bg-base-100 w-full">
-                        <figure class="px-4 pt-4">
-                            <img src="assets/game4.jpg" class="rounded-xl h-[300px] w-full object-cover" alt="Juego 4" />
+                    <div class="card w-full bg-base-100 transform transition-all duration-300 hover:scale-[1.02]">
+                        <figure class="relative h-[400px] overflow-hidden">
+                            <img src="assets/game4.jpg" class="w-full h-full object-cover transition-transform duration-700" alt="Juego 4" />
                         </figure>
-                        <div class="card-body">
-                            <h2 class="card-title">Mystery Island</h2>
+                        <div class="card-body -mt-20 relative z-10">
+                            <h2 class="card-title text-2xl font-bold text-primary-content">Mystery Island</h2>
+                            <br>
                             <p>¡Descubre todos los secretos!</p>
-                            <div class="badge badge-secondary">Aventura</div>
+                            <div class="flex gap-2 mt-2">
+                                <div class="badge badge-primary">Aventura</div>
+                            </div>
                         </div>
                     </div>
                     <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -109,10 +126,11 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center lg:text-left max-w-md">
-                <h1 class="text-5xl font-bold">C4-Games</h1>
+            <div class="text-center lg:text-left max-w-md gap-4">
+                <h1 class="sr-only">C4-Games</h1>
+                <img src="assets/c4games.png" alt="C4-Games logo" class="w-full h-auto mx-auto lg:mx-0" />
                 <p class="py-6">Tu destino para encontrar los mejores videojuegos al mejor precio. ¡Descubre nuestros juegos más vendidos!</p>
-                <button class="btn btn-primary">Ver Catálogo</button>
+                <button class="btn btn-primary mx-auto block">Ver Catálogo</button>
             </div>
         </div>
     </div>
