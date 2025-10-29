@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameStore - Tu tienda de videojuegos</title>
+    <!-- Tailwind CSS y DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.3/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar bg-base-100">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <label tabindex="0" class="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                    </svg>
+                </label>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a>Inicio</a></li>
+                    <li><a>Catálogo</a></li>
+                    <li><a>Ofertas</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-ghost normal-case text-xl">C4-Games</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+                <li><a>Inicio</a></li>
+                <li><a>Catálogo</a></li>
+                <li><a>Ofertas</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <a class="btn btn-primary">Carrito <span class="badge badge-secondary ml-2">0</span></a>
+        </div>
+    </div>
+
+    <!-- Hero Section with Carousel -->
+    <div class="hero min-h-[70vh] bg-base-200">
+        <div class="hero-content flex-col lg:flex-row-reverse gap-8 max-w-7xl">
+            <div class="carousel w-full max-w-2xl rounded-box shadow-xl" id="games-carousel">
+                <div id="slide1" class="carousel-item relative w-full">
+                    <div class="card bg-base-100 w-full">
+                        <figure class="px-4 pt-4">
+                            <img src="assets/game1.jpg" class="rounded-xl h-[300px] w-full object-cover" alt="Juego 1" />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title">The Last Adventure</h2>
+                            <p>¡El juego más vendido del año!</p>
+                            <div class="badge badge-secondary">Aventura</div>
+                        </div>
+                    </div>
+                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide4" class="btn btn-circle">❮</a> 
+                        <a href="#slide2" class="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide2" class="carousel-item relative w-full">
+                    <div class="card bg-base-100 w-full">
+                        <figure class="px-4 pt-4">
+                            <img src="assets/game2.jpg" class="rounded-xl h-[300px] w-full object-cover" alt="Juego 2" />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title">Space Warriors</h2>
+                            <p>¡La mejor experiencia espacial!</p>
+                            <div class="badge badge-secondary">Acción</div>
+                        </div>
+                    </div>
+                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide1" class="btn btn-circle">❮</a> 
+                        <a href="#slide3" class="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide3" class="carousel-item relative w-full">
+                    <div class="card bg-base-100 w-full">
+                        <figure class="px-4 pt-4">
+                            <img src="assets/game3.jpg" class="rounded-xl h-[300px] w-full object-cover" alt="Juego 3" />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title">Racing Pro</h2>
+                            <p>¡Velocidad sin límites!</p>
+                            <div class="badge badge-secondary">Deportes</div>
+                        </div>
+                    </div>
+                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide2" class="btn btn-circle">❮</a> 
+                        <a href="#slide4" class="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide4" class="carousel-item relative w-full">
+                    <div class="card bg-base-100 w-full">
+                        <figure class="px-4 pt-4">
+                            <img src="assets/game4.jpg" class="rounded-xl h-[300px] w-full object-cover" alt="Juego 4" />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title">Mystery Island</h2>
+                            <p>¡Descubre todos los secretos!</p>
+                            <div class="badge badge-secondary">Aventura</div>
+                        </div>
+                    </div>
+                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide3" class="btn btn-circle">❮</a> 
+                        <a href="#slide1" class="btn btn-circle">❯</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center lg:text-left max-w-md">
+                <h1 class="text-5xl font-bold">C4-Games</h1>
+                <p class="py-6">Tu destino para encontrar los mejores videojuegos al mejor precio. ¡Descubre nuestros juegos más vendidos!</p>
+                <button class="btn btn-primary">Ver Catálogo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Catálogo de Juegos -->
+    <div class="container mx-auto p-4">
+        <h2 class="text-3xl font-bold text-center mb-8">Juegos Destacados</h2>
+        <div id="juegos-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Los juegos se cargarán dinámicamente aquí -->
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="js/logica.js"></script>
+</body>
+</html>

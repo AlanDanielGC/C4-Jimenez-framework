@@ -1,0 +1,48 @@
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilos del carrusel */
+.carousel {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    overflow-x: hidden;
+}
+
+.carousel-item {
+    transition: all 0.5s ease-in-out;
+}
+
+.carousel .card {
+    margin: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.carousel .btn-circle {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    backdrop-filter: blur(5px);
+}
+
+.carousel .btn-circle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
