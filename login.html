@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - GameStore</title>
+    <!-- Tailwind CSS y DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.3/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- CSS personalizado (para el efecto hover de las tarjetas) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar (idéntico al de index.html para consistencia) -->
+    <div class="navbar bg-base-100">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <label tabindex="0" class="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                    </svg>
+                </label>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a>Inicio</a></li>
+                    <li><a>Catálogo</a></li>
+                    <li><a>Ofertas</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-ghost normal-case text-xl" href="index.html">C4-Games</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a>Catálogo</a></li>
+                <li><a>Ofertas</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <!-- Botón de Iniciar Sesión añadido para consistencia -->
+            <a class="btn btn-ghost mr-2" href="login.html">Iniciar Sesión</a>
+            <!-- Botón de Carrito -->
+            <a class="btn btn-primary">Carrito <span class="badge badge-secondary ml-2">0</span></a>
+        </div>
+    </div>
+
+    <!-- Hero Section para centrar el Login -->
+    <div class="hero min-h-[calc(100vh-68px)] bg-base-200">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+            <!-- Texto promocional (similar al hero del index) -->
+            <div class="text-center lg:text-left">
+                <h1 class="text-5xl font-bold">¡Bienvenido de vuelta!</h1>
+                <p class="py-6">Inicia sesión para acceder a tu biblioteca, guardar tu carrito y recibir ofertas exclusivas en C4-Games.</p>
+            </div>
+            
+            <!-- Tarjeta de Login -->
+            <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div class="card-body">
+                    <h2 class="card-title text-2xl mb-4">Iniciar Sesión</h2>
+                    <!-- Formulario -->
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Email</span>
+                        </label>
+                        <input type="email" placeholder="tu@email.com" class="input input-bordered" required />
+                    </div>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Contraseña</span>
+                        </label>
+                        <input type="password" placeholder="contraseña" class="input input-bordered" required />
+                        <label class="label">
+                            <a href="#" class="label-text-alt link link-hover">¿Olvidaste tu contraseña?</a>
+                        </label>
+                    </div>
+                    <div class="form-control mt-6">
+                        <button class="btn btn-primary">Iniciar Sesión</button>
+                    </div>
+                    
+                    <!-- Enlace a Registro -->
+                    <p class="mt-4 text-center text-sm">
+                        ¿No tienes cuenta?
+                        <a href="#" class="link link-primary font-medium">Regístrate aquí</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
