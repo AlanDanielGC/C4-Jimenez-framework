@@ -57,7 +57,14 @@ const catalogoJuegos = [
     new Juego(3, "Rayman Legends", 39.99, "Aventura", "assets/game3.jpg", "Rayman, Globox y los Diminutos deambulan por un bosque encantado cuando descubren una misteriosa tienda llena de pinturas."),
     new Juego(4, "Terraria", 29.99, "Aventura", "assets/game4.jpg", "¡Cava, lucha, explora, construye! Nada es imposible en este juego de aventuras lleno de acción. El mundo es tu lienzo."),
     new Juego(5, "Cyberpunk 2077", 54.99, "Acción", "assets/game5.jpg", "Una historia de acción y aventura en mundo abierto ambientada en Night City, una megalópolis obsesionada con el poder y el glamur."),
-    new Juego(6, "Final Fantasy VII", 44.99, "RPG", "assets/game6.jpg", "El mundo ha caído bajo el control de Shinra Electric Power Company, una corporación siniestra que controla la fuerza vital del planeta.")
+    new Juego(6, "Final Fantasy VII", 44.99, "RPG", "assets/game6.jpg", "El mundo ha caído bajo el control de Shinra Electric Power Company, una corporación siniestra que controla la fuerza vital del planeta."),
+    new Juego(7, "Battlefield 6", 69.99, "Acción", "assets/battlefield6.webp", "Sumérgete en intensas batallas multijugador con vehículos, destrucción total y combates épicos a gran escala."),
+    new Juego(8, "Red Dead Redemption II", 59.99, "Aventura", "assets/red_dead_redemption2.webp", "Vive la historia de Arthur Morgan y la banda de Van der Linde en el salvaje oeste mientras el mundo moderno se acerca."),
+    new Juego(9, "World War Z", 39.99, "Acción / Supervivencia", "assets/world_war_z.jpg", "Lucha contra hordas masivas de zombis en este intenso shooter cooperativo basado en el exitoso universo de World War Z."),
+    new Juego(10, "Dead Space", 49.99, "Terror / Ciencia Ficción", "assets/dead_space.webp", "Revive el clásico del terror espacial en una experiencia reconstruida desde cero con atmósfera, tensión y horror puro."),
+    new Juego(13, "Need for Speed: Heat", 44.99, "Carreras", "assets/nfs_heat.webp", "Corre de día en eventos oficiales y desafía la ley por la noche en esta vibrante entrega de la saga NFS."),
+    new Juego(14, "Titanfall 2", 29.99, "Acción / Shooter", "assets/titanfall2.jpg", "Combina la potencia de un titán con la agilidad de un piloto en combates rápidos y fluidos llenos de adrenalina."),
+    
 ];
 
 // Funciones de manipulación del DOM
