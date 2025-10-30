@@ -91,3 +91,134 @@
     transition: background-image 0.6s ease, filter 0.3s ease, transform 0.3s ease;
     will-change: background-image, filter;
 }
+
+/* ========================================================== */
+/* ESTILOS PARA LA PÁGINA DE CATÁLOGO (C4 GAMES) */
+/* ========================================================== */
+
+/* Estilo para el fondo oscuro principal */
+.catalogo-body {
+    background-color: #121212; /* Fondo muy oscuro */
+}
+
+/* Estilo del Header/Barra de Navegación */
+.catalogo-header {
+    background-color: #121212;
+    border-bottom: 1px solid #282828; /* Línea de separación sutil */
+    color: white;
+    padding: 1rem 0;
+}
+
+/* Contenedor principal para centrar el contenido */
+.catalogo-main-content {
+    max-width: 1280px; /* Ancho máximo para el contenido */
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+}
+
+/* Título principal "Todas Las Ofertas" */
+.catalogo-title {
+    font-size: 2.5rem; /* Ajuste para el título grande */
+    font-weight: 300; /* Fuente ligera */
+    color: white;
+}
+
+/* Estilos de la barra lateral de filtros (Sidebar) */
+.catalogo-sidebar {
+    padding-right: 1.5rem;
+    border-right: 1px solid #282828; /* Separador de columna */
+}
+
+.catalogo-sidebar h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #cccccc;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #282828; /* Separador de sección de filtro */
+}
+
+.catalogo-sidebar .label-text {
+    font-size: 0.9rem;
+    color: #cccccc;
+}
+
+/* Estilos específicos para la tarjeta de juego en el catálogo */
+.game-card {
+    background-color: #1b1b1b; /* Fondo un poco más claro para la tarjeta */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+    /* Usa las transiciones de .card definidas arriba */
+}
+
+/* Etiqueta de descuento (AHORRA UN XX%) */
+.discount-tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #007bff; /* Azul primario para descuento */
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 0.2rem 0.5rem;
+    z-index: 10;
+}
+
+/* Animación al pasar el cursor (hover) */
+
+/* Contenedor principal de la tarjeta al pasar el mouse */
+.game-card:hover {
+    /* Mantiene las propiedades de .card:hover */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Vista por defecto de la tarjeta (se oculta al hacer hover) */
+.default-view {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+/* Vista de detalles (aparece al hacer hover) */
+.hover-details {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.95); /* Overlay oscuro casi negro */
+    padding: 1rem;
+    opacity: 0;
+    transform: scale(0.95); /* Empieza un poco más pequeño */
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Estado de hover */
+.game-card:hover .hover-details {
+    opacity: 1;
+    transform: scale(1.0); /* Se acerca al tamaño completo */
+}
+
+.game-card:hover .default-view {
+     opacity: 0; /* Oculta la vista predeterminada */
+}
+
+/* Estilos de precio */
+.old-price {
+    color: #555555; /* Gris oscuro para el precio tachado */
+    text-decoration: line-through;
+    font-size: 0.8rem;
+}
+
+.new-price {
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Estilo del ordenamiento y paginación */
+.pagination-controls {
+    border-bottom: 1px solid #282828;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
