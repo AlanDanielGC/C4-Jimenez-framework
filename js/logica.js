@@ -1,12 +1,19 @@
 // 1. Introducción al lenguaje JavaScript
-function actualizarBadgeCarrito() {
-    const carrito = obtenerCarrito();
-    // Busca el badge en el header
-    const carritoTotal = document.querySelector('.badge'); 
-    if (carritoTotal) {
-        carritoTotal.textContent = carrito.length;
-    }
+function obtenerCarrito() {
+    return JSON.parse(localStorage.getItem('carrito')) || [];
 }
+
+/**
+ * Guarda el carrito actualizado en localStorage.
+ * @param {Array} carrito - El array del carrito a guardar.
+ */
+function guardarCarrito(carrito) {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+
+
+
 // 2. Manejo del framework (Sin cambios)
 function actualizarInterfaz() {
     // Esta función ahora es reemplazada por actualizarBadgeCarrito
@@ -27,33 +34,31 @@ class Juego {
         this.imagen = imagen;
         this.descripcion = descripcion;
     }
+crearElementoJuego() {
+    return `
+        <div class="card bg-base-100 shadow-xl">
+            
+            <figure class="h-60"> 
+                <img src="${this.imagen}" alt="${this.titulo}" class="object-cover w-full h-full" />
+            </figure>
 
-    crearElementoJuego() {
-        return `
-            <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">${this.titulo}</h2>
+                <p>Género: ${this.genero}</p>
                 
-                <figure class="h-60"> 
-                    <img src="${this.imagen}" alt="${this.titulo}" class="object-cover w-full h-full" />
-                </figure>
-
-                <div class="card-body">
-                    <h2 class="card-title">${this.titulo}</h2>
-                    <p>Género: ${this.genero}</p>
-                    
-                    <p class="text-sm text-base-content/70 italic mt-2">${this.descripcion}</p> 
-                    
-                    <div class="flex justify-between items-center mt-4">
-                        <span class="text-2xl font-bold">${this.precio}</span>
-                        <button onclick="agregarAlCarrito('${this.id}')" class="btn btn-primary">
-                            Añadir al carrito
-                        </button>
-                    </div>
+                <p class="text-sm text-base-content/70 italic mt-2">${this.descripcion}</p> 
+                
+                <div class="flex justify-between items-center mt-4">
+                    <span class="text-2xl font-bold">${this.precio}</span>
+                    <button onclick="agregarAlCarrito(${this.idJuego})" class="btn btn-primary">
+                        Añadir al carrito
+                    </button>
                 </div>
             </div>
-        `;
-    }
+        </div>
+    `;
 }
-
+}
 // Datos de ejemplo
 const catalogoJuegos = [
     new Juego(1, "The Last Adventure", 59.99, "Aventura", "assets/game1.jpg"),
@@ -106,24 +111,27 @@ function cargarJuegos() {
     const juegosHTML = catalogoJuegos.map(juego => juego.crearElementoJuego()).join('');
     contenedor.innerHTML = juegosHTML;
 }
-// (MODIFICADA) Función agregarAlCarrito
+
 function agregarAlCarrito(idJuego) {
     const idJuegoNum = parseInt(idJuego, 10);
-    const juego = catalogoJuegos.find(j => j.id === idJuegoNum);
+    
+    // Busca por 'idJuego' (como se define en tu clase)
+    const juego = catalogoJuegos.find(j => j.idJuego === idJuegoNum);
     
     if (juego) {
+        // Usa las funciones de localStorage
         const carrito = obtenerCarrito();
         carrito.push(juego); // Añadimos el objeto JUEGO completo
         guardarCarrito(carrito);
         
         actualizarBadgeCarrito(); // Actualiza el número
         
-        // La función de notificación que ya tenías
         mostrarNotificacion(`${juego.titulo} añadido al carrito`);
     } else {
         console.error(`No se encontró el juego con ID: ${idJuegoNum}`);
     }
 }
+
 
 function mostrarNotificacion(mensaje) {
     // Crear y mostrar una notificación
@@ -228,7 +236,7 @@ agregarAlCarrito();
 function crearTarjetaJuego(juego) {
     // Esta función ahora renderiza usando las propiedades de la CLASE 'Juego'
     return `
-        <div class="game-card card bg-base-300 shadow-xl overflow-hidden relative group cursor-pointer" id="juego-${juego.id}">
+        <div class="game-card card bg-base-300 shadow-xl overflow-hidden relative group cursor-pointer" id="juego-${juego.idJuego}">
             
             <div class="default-view transition-opacity duration-300">
                 <figure><img src="${juego.imagen}" alt="${juego.titulo}" class="w-full h-48 object-cover"/></figure>
@@ -250,9 +258,9 @@ function crearTarjetaJuego(juego) {
                         </div>
                 </div>
             </div>
-            <button onclick="agregarAlCarrito('${juego.id}')" class="btn btn-primary btn-sm w-full mt-4">
-                        Añadir al carrito
-                    </button>
+            <button onclick="agregarAlCarrito(${juego.idJuego})" class="btn btn-primary btn-sm w-full mt-4">
+                    Añadir al carrito
+                </button>
         </div>
     `;
 }
@@ -369,7 +377,42 @@ function inicializarCatalogo() {
         });
     });
 }
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Siempre actualizar el badge al cargar cualquier página
+    actualizarBadgeCarrito();
 
+    // 2. Lógica Específica del INDEX
+    if (document.getElementById('games-carousel')) {
+        cargarJuegos(); 
+        iniciarCarrusel();
+        const initialIdx = getSlideIndexFromHash() || 1;
+        setHeroToSlideIndex(initialIdx);
+
+        window.addEventListener('hashchange', () => {
+            const idx = getSlideIndexFromHash();
+            if (idx) setHeroToSlideIndex(idx);
+        });
+
+        window.addEventListener('resize', () => {
+            const carousel = document.getElementById('games-carousel');
+            if (!carousel) return;
+            const slideWidth = carousel.offsetWidth || 1;
+            const index = Math.round(carousel.scrollLeft / slideWidth) + 1;
+            setHeroToSlideIndex(index);
+        });
+    }
+
+    // 3. Lógica Específica del CATÁLOGO
+    if (document.querySelector('.filtro-control')) {
+        inicializarCatalogo();
+    }
+    
+    // 4. Lógica Específica del CARRITO
+    if (document.getElementById('carrito-container')) {
+        cargarPaginaCarrito();
+    }
+});
 /**
  * FIX: Se modifica el DOMContentLoaded listener principal para que
  * llame a inicializarCatalogo() SÓLO si detecta que estamos en la página del catálogo
