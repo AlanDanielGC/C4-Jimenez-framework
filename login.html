@@ -35,9 +35,10 @@
                 <li><a>Ofertas</a></li>
             </ul>
         </div>
-        <div class="navbar-end">
-            <!-- Botón de Iniciar Sesión añadido para consistencia -->
-            <a class="btn btn-ghost mr-2" href="login.html" data-auth-login-link>Iniciar Sesión</a>
+        <div class="navbar-end gap-2 items-center">
+            <span class="hidden font-semibold text-sm" data-auth-greeting></span>
+            <button type="button" class="btn btn-ghost" data-auth-login-link>Iniciar Sesión</button>
+            <button type="button" class="btn btn-primary hidden" data-auth-logout>Salir</button>
             <!-- ✅ Botón de Carrito linkeado -->
             <a href="carrito.html" id="carrito-btn" class="btn btn-primary">Carrito <span class="badge badge-secondary ml-2">0</span></a>
         </div>
@@ -85,6 +86,70 @@
             </div>
         </div>
     </div>
+
+    <dialog id="register-modal" class="modal">
+        <div class="modal-box relative max-w-md">
+            <h3 class="font-bold text-lg">Crear cuenta</h3>
+            <p class="text-sm opacity-70 mb-4">Regístrate para guardar tus compras y recibir ofertas personalizadas.</p>
+            <form id="register-form" class="space-y-4" novalidate data-autologin="true" data-redirect="index.html">
+                <div class="form-control">
+                    <label class="label" for="register-name">
+                        <span class="label-text">Nombre completo</span>
+                    </label>
+                    <input id="register-name" name="nombre" type="text" placeholder="Tu nombre" class="input input-bordered" autocomplete="name" required />
+                </div>
+                <div class="form-control">
+                    <label class="label" for="register-email">
+                        <span class="label-text">Email</span>
+                    </label>
+                    <input id="register-email" name="email" type="email" placeholder="tu@email.com" class="input input-bordered" autocomplete="email" required />
+                </div>
+                <div class="form-control">
+                    <label class="label" for="register-password">
+                        <span class="label-text">Contraseña</span>
+                    </label>
+                    <input id="register-password" name="password" type="password" placeholder="mínimo 6 caracteres" class="input input-bordered" autocomplete="new-password" minlength="6" required />
+                </div>
+                <div class="form-control">
+                    <label class="label" for="register-password-confirm">
+                        <span class="label-text">Confirmar contraseña</span>
+                    </label>
+                    <input id="register-password-confirm" name="passwordConfirm" type="password" placeholder="repite tu contraseña" class="input input-bordered" autocomplete="new-password" minlength="6" required />
+                </div>
+                <p id="register-feedback" class="text-sm hidden"></p>
+                <div class="modal-action mt-6">
+                    <button type="button" class="btn btn-ghost" data-auth-register-cancel>Cancelar</button>
+                    <button type="submit" class="btn btn-primary" data-auth-register-submit>Crear cuenta</button>
+                </div>
+            </form>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button data-auth-register-cancel aria-label="Cerrar registro">Cerrar</button>
+        </form>
+    </dialog>
+
+    <dialog id="forgot-modal" class="modal">
+        <div class="modal-box relative max-w-md">
+            <h3 class="font-bold text-lg">Recuperar contraseña</h3>
+            <p class="text-sm opacity-70 mb-4">Ingresa el correo asociado a tu cuenta y te enviaremos instrucciones (simulación).</p>
+            <form id="forgot-form" class="space-y-4" novalidate>
+                <div class="form-control">
+                    <label class="label" for="forgot-email">
+                        <span class="label-text">Email</span>
+                    </label>
+                    <input id="forgot-email" name="email" type="email" class="input input-bordered" placeholder="tu@email.com" autocomplete="email" required />
+                </div>
+                <p id="forgot-feedback" class="text-sm hidden"></p>
+                <div class="modal-action mt-6">
+                    <button type="button" class="btn btn-ghost" data-auth-forgot-cancel>Cancelar</button>
+                    <button type="submit" class="btn btn-primary" data-auth-forgot-submit>Enviar instrucciones</button>
+                </div>
+            </form>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button data-auth-forgot-cancel aria-label="Cerrar recuperación">Cerrar</button>
+        </form>
+    </dialog>
 
     <script src="js/auth.js"></script>
 </body>
