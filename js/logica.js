@@ -15,24 +15,32 @@ function filtrarJuegosPorPrecio(juegos, precioMaximo) {
 
 // 4. Manipulación de objetos
 class Juego {
-    constructor(id, titulo, precio, genero, imagen) {
+    constructor(id, titulo, precio, genero, imagen,descripcion) {
         this.id = id;
         this.titulo = titulo;
         this.precio = precio;
         this.genero = genero;
         this.imagen = imagen;
+        this.descripcion = descripcion;
     }
 
     crearElementoJuego() {
         return `
             <div class="card bg-base-100 shadow-xl">
-                <figure><img src="${this.imagen}" alt="${this.titulo}" /></figure>
+                
+                <figure class="h-60"> 
+                    <img src="${this.imagen}" alt="${this.titulo}" class="object-cover w-full h-full" />
+                </figure>
+
                 <div class="card-body">
                     <h2 class="card-title">${this.titulo}</h2>
                     <p>Género: ${this.genero}</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-2xl font-bold">$${this.precio}</span>
-                        <button onclick="agregarAlCarrito(${this.id})" class="btn btn-primary">
+                    
+                    <p class="text-sm text-base-content/70 italic mt-2">${this.descripcion}</p> 
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-bold">${this.precio}</span>
+                        <button onclick="agregarAlCarrito('${this.id}')" class="btn btn-primary">
                             Añadir al carrito
                         </button>
                     </div>
@@ -44,12 +52,12 @@ class Juego {
 
 // Datos de ejemplo
 const catalogoJuegos = [
-    new Juego(1, "The Last Adventure", 59.99, "Aventura", "assets/game1.jpg"),
-    new Juego(2, "Space Warriors", 49.99, "Acción", "assets/game2.jpg"),
-    new Juego(3, "Racing Pro", 39.99, "Deportes", "assets/game3.jpg"),
-    new Juego(4, "Mystery Island", 29.99, "Aventura", "assets/game4.jpg"),
-    new Juego(5, "Cyber Battle", 54.99, "Acción", "assets/game5.jpg"),
-    new Juego(6, "Fantasy Quest", 44.99, "RPG", "assets/game6.jpg")
+    new Juego(1, "Celeste", 59.99, "Aventura", "assets/game1.jpg", "Ayuda a Madeline a sobrevivir a sus demonios internos en su viaje a la cima de la montaña Celeste, en este juego de plataformas súper ajustado."),
+    new Juego(2, "Elden Ring", 49.99, "Acción", "assets/game2.jpg", "Levántate, Sinluz, y que la gracia te guíe para abrazar el poder del Círculo de Elden y convertirte en un Señor del Círculo."),
+    new Juego(3, "Rayman Legends", 39.99, "Aventura", "assets/game3.jpg", "Rayman, Globox y los Diminutos deambulan por un bosque encantado cuando descubren una misteriosa tienda llena de pinturas."),
+    new Juego(4, "Terraria", 29.99, "Aventura", "assets/game4.jpg", "¡Cava, lucha, explora, construye! Nada es imposible en este juego de aventuras lleno de acción. El mundo es tu lienzo."),
+    new Juego(5, "Cyberpunk 2077", 54.99, "Acción", "assets/game5.jpg", "Una historia de acción y aventura en mundo abierto ambientada en Night City, una megalópolis obsesionada con el poder y el glamur."),
+    new Juego(6, "Final Fantasy VII", 44.99, "RPG", "assets/game6.jpg", "El mundo ha caído bajo el control de Shinra Electric Power Company, una corporación siniestra que controla la fuerza vital del planeta.")
 ];
 
 // Funciones de manipulación del DOM
