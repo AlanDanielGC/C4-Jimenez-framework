@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<usuarios>
+	<usuario id="1">
+		<nombre>Solano Barrientos Alejandro</nombre>
+		<email>alejandro.solano@gamestore.com</email>
+		<password>c4games123</password>
+	</usuario>
+	<usuario id="2">
+		<nombre>Vallecillo Alvarado Emmanuel Saliff</nombre>
+		<email>emmanuel.vallecillo@gamestore.com</email>
+		<password>c4games123</password>
+	</usuario>
+	<usuario id="3">
+		<nombre>Sedeno Trujillo Irvin Sahi</nombre>
+		<email>irvin.sedeno@gamestore.com</email>
+		<password>c4games123</password>
+	</usuario>
+	<usuario id="4">
+		<nombre>Hernandez Melchor Luis Alberto</nombre>
+		<email>luis.hernandez@gamestore.com</email>
+		<password>c4games123</password>
+	</usuario>
+	<usuario id="5">
+		<nombre>Barco Hernandez Oscar Gael</nombre>
+		<email>oscar.barco@gamestore.com</email>
+		<password>c4games123</password>
+	</usuario>
+	<usuario id="6">
+		<nombre>Godinez Castaneda Alan Daniel</nombre>
+		<email>alan.godinez@gamestore.com</email>
+		<password>c4games123</password>
+	</usuario>
+	<usuario id="7">
+		<nombre>Ramirez Gil Jair Uriel</nombre>
+		<email>jair.ramirez@gamestore.com</email>
+		<password>c4games123</password>
+	</usuario>
+</usuarios>

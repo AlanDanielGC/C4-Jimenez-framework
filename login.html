@@ -37,7 +37,7 @@
         </div>
         <div class="navbar-end">
             <!-- Botón de Iniciar Sesión añadido para consistencia -->
-            <a class="btn btn-ghost mr-2" href="login.html">Iniciar Sesión</a>
+            <a class="btn btn-ghost mr-2" href="login.html" data-auth-login-link>Iniciar Sesión</a>
             <!-- ✅ Botón de Carrito linkeado -->
             <a href="carrito.html" id="carrito-btn" class="btn btn-primary">Carrito <span class="badge badge-secondary ml-2">0</span></a>
         </div>
@@ -53,38 +53,39 @@
             </div>
             
             <!-- Tarjeta de Login -->
-            <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <div class="card relative flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 overflow-hidden">
                 <div class="card-body">
                     <h2 class="card-title text-2xl mb-4">Iniciar Sesión</h2>
-                    <!-- Formulario -->
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Email</span>
-                        </label>
-                        <input type="email" placeholder="tu@email.com" class="input input-bordered" required />
-                    </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Contraseña</span>
-                        </label>
-                        <input type="password" placeholder="contraseña" class="input input-bordered" required />
-                        <label class="label">
-                            <a href="#" class="label-text-alt link link-hover">¿Olvidaste tu contraseña?</a>
-                        </label>
-                    </div>
-                    <div class="form-control mt-6">
-                        <button class="btn btn-primary">Iniciar Sesión</button>
-                    </div>
-                    
-                    <!-- Enlace a Registro -->
-                    <p class="mt-4 text-center text-sm">
-                        ¿No tienes cuenta?
-                        <a href="#" class="link link-primary font-medium">Regístrate aquí</a>
-                    </p>
+                    <form id="login-form" class="space-y-4" novalidate data-redirect="index.html">
+                        <div class="form-control">
+                            <label class="label" for="login-email">
+                                <span class="label-text">Email</span>
+                            </label>
+                            <input id="login-email" name="email" type="email" placeholder="tu@email.com" class="input input-bordered" autocomplete="email" required />
+                        </div>
+                        <div class="form-control">
+                            <label class="label" for="login-password">
+                                <span class="label-text">Contraseña</span>
+                            </label>
+                            <input id="login-password" name="password" type="password" placeholder="contraseña" class="input input-bordered" autocomplete="current-password" required />
+                            <label class="label">
+                                <a href="#" class="label-text-alt link link-hover" data-auth-forgot>¿Olvidaste tu contraseña?</a>
+                            </label>
+                        </div>
+                        <div class="form-control mt-6">
+                            <button type="submit" class="btn btn-primary w-full" data-auth-submit>Iniciar Sesión</button>
+                        </div>
+                        <p id="login-feedback" class="text-sm hidden"></p>
+                        <p class="mt-4 text-center text-sm">
+                            ¿No tienes cuenta?
+                            <a href="#" class="link link-primary font-medium" data-auth-register>Regístrate aquí</a>
+                        </p>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="js/auth.js"></script>
 </body>
 </html>
