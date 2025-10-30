@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameStore - Tu tienda de videojuegos</title>
-    <!-- Tailwind CSS y DaisyUI -->
+    
+    <!-- aqui se importa el framework -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.3/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- CSS personalizado -->
+    
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Navbar -->
     <div class="navbar bg-base-100">
         <div class="navbar-start">
             <div class="dropdown">
@@ -37,12 +37,14 @@
         </div>
         <div class="navbar-end">
             <a class="btn btn-ghost mr-2" href="login.html" data-auth-login-link>Iniciar Sesión</a>
-            <!-- 🔗 Botón del carrito con enlace -->
+
             <a id="carrito-btn" class="btn btn-primary" href="carrito.html">Carrito <span class="badge badge-secondary ml-2">0</span></a>
         </div>
     </div>
 
-    <!-- Hero Section with Carousel -->
+
+
+
     <div class="hero min-h-[70vh] bg-base-500 relative overflow-hidden">
         <div id="hero-bg" aria-hidden="true" class="absolute inset-0 -z-10">
             <div class="hero-bg-image w-full h-full bg-center bg-cover transition-all duration-500"></div>
@@ -136,19 +138,19 @@
         </div>
     </div>
 
-    <!-- Catálogo de Juegos -->
+    
+    
     <div class="container mx-auto p-4">
         <h2 class="text-3xl font-bold text-center mb-8">Juegos Destacados</h2>
         <div id="juegos-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <!-- Los juegos se cargarán dinámicamente aquí -->
+            <!-- objetos aqui -->
         </div>
     </div>
 
-    <!-- Script -->
     <script src="js/logica.js"></script>
     <script src="js/auth.js"></script>
 
-    <!-- 🔧 Script para ocultar el botón de carrito en carrito.html -->
+    
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const carritoBtn = document.getElementById("carrito-btn");

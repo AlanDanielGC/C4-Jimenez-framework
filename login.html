@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - GameStore</title>
-    <!-- Tailwind CSS y DaisyUI -->
+    <!-- aqui se importa el framework -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.3/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- CSS personalizado (para el efecto hover de las tarjetas) -->
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Navbar (idéntico al de index.html para consistencia) -->
     <div class="navbar bg-base-100">
         <div class="navbar-start">
             <div class="dropdown">
@@ -36,23 +35,24 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <!-- Botón de Iniciar Sesión añadido para consistencia -->
+            
             <a class="btn btn-ghost mr-2" href="login.html" data-auth-login-link>Iniciar Sesión</a>
-            <!-- ✅ Botón de Carrito linkeado -->
+            
             <a href="carrito.html" id="carrito-btn" class="btn btn-primary">Carrito <span class="badge badge-secondary ml-2">0</span></a>
         </div>
     </div>
 
-    <!-- Hero Section para centrar el Login -->
+    
     <div class="hero min-h-[calc(100vh-68px)] bg-base-200">
         <div class="hero-content flex-col lg:flex-row-reverse">
-            <!-- Texto promocional (similar al hero del index) -->
+            
+
             <div class="text-center lg:text-left">
                 <h1 class="text-5xl font-bold">¡Bienvenido de vuelta!</h1>
                 <p class="py-6">Inicia sesión para acceder a tu biblioteca, guardar tu carrito y recibir ofertas exclusivas en C4-Games.</p>
             </div>
             
-            <!-- Tarjeta de Login -->
+            
             <div class="card relative flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 overflow-hidden">
                 <div class="card-body">
                     <h2 class="card-title text-2xl mb-4">Iniciar Sesión</h2>

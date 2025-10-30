@@ -1,5 +1,4 @@
 
-/* Estilos generales de las tarjetas */
 .card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -18,7 +17,7 @@
     z-index: 1000;
 }
 
-/* Estilos del carrusel */
+
 .carousel {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 1rem;
@@ -36,8 +35,8 @@
 
 .carousel .card {
     margin: 0.5rem;
-    /* Fondo sólido para evitar transparencias */
-    background: #0b1220; /* color oscuro consistente con el tema */
+    
+    background: #0b1220; 
     border-radius: 0.75rem;
 }
 
@@ -62,7 +61,7 @@
                 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-/* Mejoras para las imágenes del carrusel */
+
 .carousel .card figure {
     position: relative;
     overflow: hidden;
@@ -72,14 +71,14 @@
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* No se aplica zoom a las imágenes al hacer hover */
+
 .carousel .card figure img {
     transform: none;
 }
 
-/* Fondo del hero con blur para el slide activo */
+
 #hero-bg {
-    pointer-events: none; /* no interfiere con interacción */
+    pointer-events: none; 
 }
 .hero-bg-image {
     background-size: cover;
