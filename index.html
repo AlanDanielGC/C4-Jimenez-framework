@@ -35,8 +35,10 @@
                 <li><a>Ofertas</a></li>
             </ul>
         </div>
-        <div class="navbar-end">
-            <a class="btn btn-ghost mr-2" href="login.html" data-auth-login-link>Iniciar Sesión</a>
+        <div class="navbar-end gap-2 items-center">
+            <span class="hidden font-semibold text-sm" data-auth-greeting></span>
+            <button type="button" class="btn btn-ghost" data-auth-login-link>Iniciar Sesión</button>
+            <button type="button" class="btn btn-primary hidden" data-auth-logout>Salir</button>
             <!-- 🔗 Botón del carrito con enlace -->
             <a id="carrito-btn" class="btn btn-primary" href="carrito.html">Carrito <span class="badge badge-secondary ml-2">0</span></a>
         </div>

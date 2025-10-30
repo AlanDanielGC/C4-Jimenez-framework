@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restablecer contraseña - GameStore</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.3/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="navbar bg-base-100">
+        <div class="navbar-start">
+            <a class="btn btn-ghost normal-case text-xl" href="index.html">C4-Games</a>
+        </div>
+        <div class="navbar-end gap-2 items-center">
+            <span class="hidden font-semibold text-sm" data-auth-greeting></span>
+            <button type="button" class="btn btn-ghost" data-auth-login-link>Iniciar Sesión</button>
+            <button type="button" class="btn btn-primary hidden" data-auth-logout>Salir</button>
+            <a href="carrito.html" id="carrito-btn" class="btn btn-primary">Carrito <span class="badge badge-secondary ml-2">0</span></a>
+        </div>
+    </div>
+
+    <div class="hero min-h-[calc(100vh-68px)] bg-base-200">
+        <div class="hero-content flex-col lg:flex-row gap-10">
+            <div class="max-w-md text-center lg:text-left">
+                <h1 class="text-4xl font-bold">Restablece tu contraseña</h1>
+                <p class="py-6">Estás a punto de actualizar la contraseña de <strong data-auth-reset-email>tu cuenta</strong>. Ingresa una nueva contraseña segura y confirma para finalizar.</p>
+                <p class="text-sm opacity-70">Si no solicitaste este cambio, simplemente cierra esta página.</p>
+            </div>
+
+            <div class="card relative w-full max-w-sm shadow-2xl bg-base-100 overflow-hidden">
+                <div class="card-body">
+                    <h2 class="card-title text-2xl mb-4">Nueva contraseña</h2>
+                    <form id="reset-form" class="space-y-4" novalidate>
+                        <div class="form-control">
+                            <label class="label" for="reset-password">
+                                <span class="label-text">Contraseña nueva</span>
+                            </label>
+                            <input id="reset-password" name="password" type="password" class="input input-bordered" placeholder="mínimo 6 caracteres" autocomplete="new-password" minlength="6" required />
+                        </div>
+                        <div class="form-control">
+                            <label class="label" for="reset-password-confirm">
+                                <span class="label-text">Confirmar contraseña</span>
+                            </label>
+                            <input id="reset-password-confirm" name="passwordConfirm" type="password" class="input input-bordered" placeholder="repite tu contraseña" autocomplete="new-password" minlength="6" required />
+                        </div>
+                        <p id="reset-feedback" class="text-sm hidden"></p>
+                        <div class="form-control mt-6">
+                            <button type="submit" class="btn btn-primary w-full" data-auth-reset-submit>Actualizar contraseña</button>
+                        </div>
+                        <div class="text-sm text-center opacity-70">
+                            <p>Recuperando: <span data-auth-reset-email></span></p>
+                            <a href="login.html" class="link link-hover">Volver al inicio de sesión</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
