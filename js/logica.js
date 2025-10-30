@@ -1,11 +1,31 @@
 // 1. Introducción al lenguaje JavaScript
 // Definición de variables y constantes
 const carritoTotal = document.querySelector('.badge');
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+let totalCarrito = 0;
 
 // 2. Manejo del framework (DaisyUI/Tailwind a través de clases dinámicas)
 function actualizarInterfaz() {
     carritoTotal.textContent = carrito.length;
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    calcularTotalCarrito();
+}
+
+function calcularTotalCarrito() {
+    totalCarrito = carrito.reduce((total, item) => total + item.precio, 0);
+    // Actualizar el total en el carrito si estamos en la página del carrito
+    const subtotalElement = document.getElementById('subtotal');
+    const shippingElement = document.getElementById('shipping');
+    const totalElement = document.getElementById('total');
+    
+    if (subtotalElement && totalElement) {
+        const subtotal = totalCarrito;
+        const shipping = subtotal > 0 ? 10 : 0; // Costo de envío fijo de $10 si hay productos
+        
+        subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+        shippingElement.textContent = `$${shipping.toFixed(2)}`;
+        totalElement.textContent = `$${(subtotal + shipping).toFixed(2)}`;
+    }
 }
 
 // 3. Estructuras de control
@@ -68,12 +88,18 @@ function cargarJuegos() {
 }
 
 function agregarAlCarrito(idJuego) {
-    const juego = catalogoJuegos.find(j => j.id === idJuego);
+    const juego = catalogoJuegos.find(j => j.id === parseInt(idJuego));
     if (juego) {
-        carrito.push(juego);
+        // Agregar el juego al carrito
+        carrito.push({
+            id: juego.id,
+            titulo: juego.titulo,
+            precio: juego.precio,
+            imagen: juego.imagen
+        });
         actualizarInterfaz();
         // Mostrar notificación usando DaisyUI
-        mostrarNotificacion(`${juego.titulo} añadido al carrito`);
+        mostrarNotificacion(`${juego.titulo} añadido al carrito ($${juego.precio.toFixed(2)})`);
     }
 }
 
