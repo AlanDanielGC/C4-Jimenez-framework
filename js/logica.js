@@ -15,7 +15,7 @@ function filtrarJuegosPorPrecio(juegos, precioMaximo) {
 
 // 4. Manipulación de objetos
 class Juego {
-    constructor(id, titulo, precio, genero, imagen) {
+    constructor(id, titulo, precio, genero, imagen,descripcion) {
         this.id = id;
         this.titulo = titulo;
         this.precio = precio;
@@ -27,14 +27,20 @@ class Juego {
     crearElementoJuego() {
         return `
             <div class="card bg-base-100 shadow-xl">
-                <figure><img src="${this.imagen}" alt="${this.titulo}" /></figure>
+                
+                <figure class="h-60"> 
+                    <img src="${this.imagen}" alt="${this.titulo}" class="object-cover w-full h-full" />
+                </figure>
+
                 <div class="card-body">
                     <h2 class="card-title">${this.titulo}</h2>
                     <p>Género: ${this.genero}</p>
-                    <p class="text-sm mt-2">${this.descripcion}</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-2xl font-bold">$${this.precio}</span>
-                        <button onclick="agregarAlCarrito(${this.id})" class="btn btn-primary">
+                    
+                    <p class="text-sm text-base-content/70 italic mt-2">${this.descripcion}</p> 
+                    
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-2xl font-bold">${this.precio}</span>
+                        <button onclick="agregarAlCarrito('${this.id}')" class="btn btn-primary">
                             Añadir al carrito
                         </button>
                     </div>
