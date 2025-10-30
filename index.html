@@ -37,13 +37,13 @@
         </div>
         <div class="navbar-end">
             <a class="btn btn-ghost mr-2" href="login.html">Iniciar Sesión</a>
-            <a class="btn btn-primary">Carrito <span class="badge badge-secondary ml-2">0</span></a>
+            <!-- 🔗 Botón del carrito con enlace -->
+            <a id="carrito-btn" class="btn btn-primary" href="carrito.html">Carrito <span class="badge badge-secondary ml-2">0</span></a>
         </div>
     </div>
 
     <!-- Hero Section with Carousel -->
     <div class="hero min-h-[70vh] bg-base-500 relative overflow-hidden">
-        <!-- Fondo dinámico difuminado basado en el slide actual -->
         <div id="hero-bg" aria-hidden="true" class="absolute inset-0 -z-10">
             <div class="hero-bg-image w-full h-full bg-center bg-cover transition-all duration-500"></div>
         </div>
@@ -146,5 +146,15 @@
 
     <!-- Script -->
     <script src="js/logica.js"></script>
+
+    <!-- 🔧 Script para ocultar el botón de carrito en carrito.html -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const carritoBtn = document.getElementById("carrito-btn");
+            if (window.location.pathname.includes("carrito.html")) {
+                carritoBtn.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
