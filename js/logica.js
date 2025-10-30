@@ -49,7 +49,43 @@ const catalogoJuegos = [
     new Juego(3, "Racing Pro", 39.99, "Deportes", "assets/game3.jpg"),
     new Juego(4, "Mystery Island", 29.99, "Aventura", "assets/game4.jpg"),
     new Juego(5, "Cyber Battle", 54.99, "Acción", "assets/game5.jpg"),
-    new Juego(6, "Fantasy Quest", 44.99, "RPG", "assets/game6.jpg")
+    new Juego(6, "Fantasy Quest", 44.99, "RPG", "assets/game6.jpg"),
+    new Juego(7, "God of War Ragnarök", 55.99, "Acción, Aventura", "https://i.imgur.com/Z8N4j6q.jpeg"),
+    new Juego(8, "Marvel's Spider-Man 2", 59.49, "Acción, Aventura", "https://i.imgur.com/w2Q4d3s.jpeg"),
+    new Juego(9, "Horizon Forbidden West", 38.99, "Aventura, RPG", "https://i.imgur.com/yY0H8k2.jpeg"),
+    new Juego(10, "Uncharted 4: El Desenlace del Ladrón", 9.99, "Aventura", "https://i.imgur.com/f7jYyJv.jpeg"),
+    new Juego(11, "Ghost of Tsushima Director's Cut", 41.99, "Acción, Aventura", "https://i.imgur.com/N4qgQ9a.jpeg"),
+    new Juego(12, "The Last of Us Part I", 52.49, "Aventura, Terror", "https://i.imgur.com/T0bX6w2.jpeg"),
+    new Juego(13, "Ratchet & Clank: Una Dimensión Aparte", 38.49, "Acción, Plataformas", "https://i.imgur.com/Q9mS2Z1.jpeg"),
+    new Juego(14, "Assasin's Creed Valhalla", 23.99, "Acción, RPG", "https://i.imgur.com/L1d4gWv.jpeg"),
+    new Juego(15, "Final Fantasy XVI", 62.99, "RPG de Acción", "https://i.imgur.com/rM1VfR9.jpeg"),
+    new Juego(16, "Cyberpunk 2077", 29.99, "RPG", "https://i.imgur.com/s4G5K7B.jpeg"),
+    new Juego(17, "The Witcher 3: Wild Hunt", 14.99, "RPG", "https://i.imgur.com/X0kZtJj.jpeg"),
+    new Juego(18, "Persona 5 Royal", 32.99, "JRPG", "https://i.imgur.com/yFv6lE7.jpeg"),
+    new Juego(19, "Diablo IV", 55.99, "RPG de Acción", "https://i.imgur.com/Hn2yE3j.jpeg"),
+    new Juego(20, "Dragon Quest XI S", 17.49, "JRPG", "https://i.imgur.com/Q7J9vD6.jpeg"),
+    new Juego(21, "Genshin Impact (Paquete de Resina)", 19.99, "Complemento, RPG", "https://i.imgur.com/jD1z7s2.jpeg"),
+    new Juego(22, "Nier: Automata", 19.99, "RPG de Acción", "https://i.imgur.com/4aK5nZp.jpeg"),
+    new Juego(23, "Mass Effect Legendary Edition", 26.99, "RPG, Ciencia Ficción", "https://i.imgur.com/dK5w8w3.jpeg"),
+    new Juego(24, "Resident Evil 4 Remake", 41.99, "Terror, Acción", "https://i.imgur.com/p9vN4kY.jpeg"),
+    new Juego(25, "Silent Hill 2 Remake", 62.99, "Terror Psicológico", "https://i.imgur.com/8mR9x0j.jpeg"),
+    new Juego(26, "Dead Space Remake", 41.99, "Terror, Ciencia Ficción", "https://i.imgur.com/z4X5GvT.jpeg"),
+    new Juego(27, "Alien: Isolation", 9.99, "Terror, Sigilo", "https://i.imgur.com/Q2hD0xK.jpeg"),
+    new Juego(28, "Outlast Trinity", 19.99, "Terror de Supervivencia", "https://i.imgur.com/J3c0QpP.jpeg"),
+    new Juego(29, "Amnesia: Rebirth", 14.99, "Terror Psicológico", "https://i.imgur.com/D8r1e2Q.jpeg"),
+    new Juego(30, "Until Dawn", 7.99, "Terror Interactivo", "https://i.imgur.com/gK9J6rI.png"),
+    new Juego(31, "EA Sports FC 25 (Pre-Order)", 66.49, "Deportes, FIFA", "https://i.imgur.com/a9JkR3L.png"),
+    new Juego(32, "FIFA 23 Ultimate Edition", 13.99, "Deportes, FIFA", "https://i.imgur.com/b5U0h9j.jpeg"),
+    new Juego(33, "FIFA 22 Standard Edition", 6.99, "Deportes, FIFA", "https://i.imgur.com/zX1N2vM.jpeg"),
+    new Juego(34, "EA Sports FC Points Pack 5000", 44.99, "Complemento, FIFA", "https://i.imgur.com/uC7s2Pj.jpeg"),
+    new Juego(35, "EA Sports FC 24", 48.99, "Deportes, FIFA", "https://i.imgur.com/rM1VfR9.jpeg"),
+    new Juego(36, "FIFA 21 Edición Héroe", 3.49, "Deportes, FIFA", "https://i.imgur.com/w2Q4d3s.jpeg"),
+    new Juego(37, "FIFA 20 Legacy Edition", 1.99, "Deportes, FIFA", "https://i.imgur.com/Z8N4j6q.jpeg"),
+    new Juego(38, "EA Sports FC 24 Ultimate Points Pack 1000", 8.99, "Complemento, FIFA", "https://i.imgur.com/Q9mS2Z1.jpeg"),
+    new Juego(39, "eFootball 2024 Premium Pass", 15.99, "Deportes, PES", "https://i.imgur.com/yFv6lE7.jpeg"),
+    new Juego(40, "eFootball 2024 Starter Kit", 14.99, "Deportes, PES", "https://i.imgur.com/p9vN4kY.jpeg"),
+    new Juego(41, "eFootball 2023 Club Edition: AC Milan", 8.99, "Deportes, PES", "https://i.imgur.com/w2Q4d3s.jpeg"),
+    new Juego(42, "eFootball 2024 Monedas 1000", 8.99, "Complemento, PES", "https://i.imgur.com/D8r1e2Q.jpeg")
 ];
 
 // Funciones de manipulación del DOM
@@ -367,6 +403,119 @@ function inicializarCatalogo() {
     const checkboxes = document.querySelectorAll('.filtro-control input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', filtrarJuegos);
+    });
+}
+
+// Ejecutar la función de inicialización al cargar el contenido
+document.addEventListener('DOMContentLoaded', inicializarCatalogo);
+
+
+///ORDENAR DE MAYOR A MENOR LOS JUEGOS ///
+
+
+// Variable para rastrear el estado actual del ordenamiento
+let ordenActual = 'precio_desc'; // Estado inicial
+
+// Función auxiliar para obtener el precio como número
+function getPrecioNumero(juego) {
+    // Elimina 'US$' y convierte a float, usando el precio actual
+    return parseFloat(juego.precioActual.replace('US$', ''));
+}
+
+/**
+ * Función que realiza la ordenación de la lista de juegos.
+ */
+function ordenarJuegos(juegos) {
+    // Es crucial crear una copia del array para no modificar el original JUEGOS_CATALOGO
+    const juegosOrdenados = [...juegos];
+
+    juegosOrdenados.sort((a, b) => {
+        switch (ordenActual) {
+            case 'precio_desc':
+                // Precio (Mayor a Menor)
+                return getPrecioNumero(b) - getPrecioNumero(a);
+            case 'precio_asc':
+                // Precio (Menor a Mayor)
+                return getPrecioNumero(a) - getPrecioNumero(b);
+            case 'nombre_asc':
+                // Nombre (A-Z)
+                return a.nombre.localeCompare(b.nombre);
+            case 'descuento_desc':
+                // Mayor Descuento (asume que el descuento es un porcentaje)
+                const descA = parseFloat(a.descuento.replace('%', ''));
+                const descB = parseFloat(b.descuento.replace('%', ''));
+                return descB - descA;
+            default:
+                return 0; // Sin cambios
+        }
+    });
+
+    return juegosOrdenados;
+}
+
+
+// --- MODIFICACIÓN DE LA FUNCIÓN PRINCIPAL DE FILTRADO ---
+
+function filtrarJuegos() {
+    // ... (Tu lógica de obtención de filtros, SIN CAMBIOS) ...
+    const filtrosGenero = Array.from(document.querySelectorAll('.filtro-genero:checked')).map(cb => cb.value.toLowerCase());
+    const filtrosContenido = Array.from(document.querySelectorAll('.filtro-contenido:checked')).map(cb => cb.value.toLowerCase());
+
+    let juegosFiltrados = JUEGOS_CATALOGO;
+    
+    // Aplicar el Filtro de Contenido
+    if (filtrosContenido.length > 0) {
+        // ... (Tu lógica de filtrado de contenido) ...
+    }
+    
+    // Aplicar el Filtro de Género
+    if (filtrosGenero.length > 0) {
+        // ... (Tu lógica de filtrado de género) ...
+    }
+
+    // ⭐️ NUEVO PASO: APLICAR ORDENAMIENTO AL FINAL
+    const juegosOrdenados = ordenarJuegos(juegosFiltrados);
+
+    // Actualizar el conteo de coincidencias
+    const conteoElement = document.querySelector('p.text-sm.text-gray-400.mb-6');
+    if (conteoElement) {
+        conteoElement.textContent = `1-${juegosOrdenados.length} de 40 coincidencias`;
+    }
+
+    // Renderizar los resultados ORDENADOS
+    renderizarCatalogo(juegosOrdenados);
+}
+
+
+// --- MODIFICACIÓN DE LA INICIALIZACIÓN ---
+
+function inicializarCatalogo() {
+    // Inicialmente se llama a filtrarJuegos, que a su vez llama a ordenarJuegos(JUEGOS_CATALOGO)
+    filtrarJuegos(); 
+
+    // Adjunta el event listener a todos los checkboxes de filtro (SIN CAMBIOS)
+    const checkboxes = document.querySelectorAll('.filtro-control input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', filtrarJuegos);
+    });
+
+    // ⭐️ NUEVO PASO: CONFIGURAR EVENTOS DEL MENÚ DE ORDENAMIENTO
+    const menuItems = document.querySelectorAll('#ordenar-menu a');
+    const ordenTexto = document.getElementById('orden-actual-texto');
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault(); // Evita que el enlace recargue la página
+            
+            // 1. Actualiza el estado global de ordenamiento
+            ordenActual = e.target.dataset.orden;
+            
+            // 2. Actualiza el texto del botón
+            ordenTexto.textContent = `Ordenar por: ${e.target.textContent.trim()}`;
+            
+            // 3. Vuelve a filtrar y ordenar la lista completa
+            filtrarJuegos(); 
+        });
     });
 }
 
