@@ -11,6 +11,45 @@ function guardarCarrito(carrito) {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
+/**
+ * Vacía todo el carrito (localStorage) y actualiza vistas/badges.
+ * Pide confirmación antes de eliminar.
+ */
+function vaciarCarrito() {
+    if (!confirm('¿Estás seguro que deseas vaciar el carrito? Esta acción no se puede deshacer.')) return;
+    guardarCarrito([]);
+    // Re-renderizar la página del carrito si existe
+    if (typeof renderCarritoPage === 'function') {
+        renderCarritoPage();
+    } else if (typeof cargarPaginaCarrito === 'function') {
+        cargarPaginaCarrito();
+    }
+    actualizarBadgeCarrito();
+    mostrarNotificacion('Carrito vaciado correctamente');
+}
+
+/**
+ * Actualiza todos los badges del carrito en las páginas (navbar, carrito, catálogo).
+ * Busca elementos con id `cart-count`, el badge dentro de `#carrito-btn` y
+ * cualquier enlace que apunte a `carrito` y actualiza su badge.
+ */
+function actualizarBadgeCarrito() {
+    const carrito = obtenerCarrito();
+    const count = carrito.length;
+
+    // Elemento con id específico (carrito.html)
+    document.querySelectorAll('#cart-count').forEach(el => el.textContent = count);
+
+    // Badge dentro del botón principal del navbar (index.html)
+    document.querySelectorAll('#carrito-btn .badge').forEach(el => el.textContent = count);
+
+    // Cualquier enlace que lleve a carrito (catalogo.html tiene un enlace sin id)
+    document.querySelectorAll('a[href*="carrito"]').forEach(a => {
+        const badge = a.querySelector('.badge');
+        if (badge) badge.textContent = count;
+    });
+}
+
 
 
 
@@ -204,7 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarJuegos();
     iniciarCarrusel();
     actualizarBadgeCarrito();
-agregarAlCarrito();
     // Inicializar el fondo del hero según el hash (o slide 1 por defecto)
     const initialIdx = getSlideIndexFromHash() || 1;
     setHeroToSlideIndex(initialIdx);
@@ -498,12 +536,16 @@ function ordenarJuegos(juegos) {
             let carrito = obtenerCarrito(); // Función de logica.js
             
             // Filtramos el carrito para quitar el juego con el id
-            const nuevoCarrito = carrito.filter(juego => juego.id !== idJuegoNum);
+        const nuevoCarrito = carrito.filter(juego => juego.idJuego !== idJuegoNum);
             
             guardarCarrito(nuevoCarrito); // Función de logica.js
             
-            // Volvemos a cargar la vista del carrito
-            cargarPaginaCarrito();
+            // Volvemos a cargar la vista del carrito (compatible con distintas implementaciones)
+            if (typeof renderCarritoPage === 'function') {
+                renderCarritoPage();
+            } else if (typeof cargarPaginaCarrito === 'function') {
+                cargarPaginaCarrito();
+            }
             actualizarBadgeCarrito(); // Función de logica.js
         }
 
@@ -542,7 +584,7 @@ function ordenarJuegos(juegos) {
                             <p class="text-gray-400">${juego.genero}</p>
                             <div class="card-actions justify-between items-center">
                                 <span class="text-xl font-bold">US$${juego.precio.toFixed(2)}</span>
-                                <button onclick="removerItemDelCarrito(${juego.id})" class="btn btn-error btn-sm">
+                                                <button onclick="removerItemDelCarrito(${juego.idJuego})" class="btn btn-error btn-sm">
                                     Quitar
                                 </button>
                             </div>
@@ -562,12 +604,67 @@ function ordenarJuegos(juegos) {
         }
 
         // Event listener para cuando la página 'carrito.html' cargue
+        // Renderiza el carrito usando los IDs presentes en `carrito.html` (cart-container, subtotal, shipping, total)
+        function renderCarritoPage() {
+            const carrito = obtenerCarrito();
+            const container = document.getElementById('cart-container');
+            const subtotalEl = document.getElementById('subtotal');
+            const shippingEl = document.getElementById('shipping');
+            const totalEl = document.getElementById('total');
+            const badge = document.getElementById('cart-count');
+
+            if (!container) return; // No estamos en la página correcta
+
+            container.innerHTML = '';
+
+            if (carrito.length === 0) {
+                container.innerHTML = '<p class="text-2xl text-gray-500">Tu carrito está vacío.</p>';
+                if (subtotalEl) subtotalEl.textContent = '$0.00';
+                if (shippingEl) shippingEl.textContent = '$0.00';
+                if (totalEl) totalEl.textContent = '$0.00';
+                if (badge) badge.textContent = '0';
+                return;
+            }
+
+            let subtotal = 0;
+
+            carrito.forEach((juego, index) => {
+                subtotal += Number(juego.precio) || 0;
+
+                const itemHTML = `
+                    <div class="card card-side bg-base-300 shadow-xl flex items-center mb-4">
+                        <figure class="w-32 h-32 flex-shrink-0">
+                            <img src="${juego.imagen}" alt="${juego.titulo}" class="w-full h-full object-cover"/>
+                        </figure>
+                        <div class="card-body p-4">
+                            <h2 class="card-title">${juego.titulo}</h2>
+                            <p class="text-gray-400">${juego.genero || ''}</p>
+                            <div class="card-actions justify-between items-center">
+                                <span class="text-xl font-bold">$${(Number(juego.precio) || 0).toFixed(2)}</span>
+                                <button onclick="removerItemDelCarrito(${juego.idJuego})" class="btn btn-error btn-sm">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += itemHTML;
+            });
+
+            const shipping = subtotal > 0 ? 10 : 0;
+            const total = subtotal + shipping;
+
+            if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+            if (shippingEl) shippingEl.textContent = `$${shipping.toFixed(2)}`;
+            if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
+            if (badge) badge.textContent = String(carrito.length);
+        }
+
+        // Event listener para cuando la página 'carrito.html' cargue: elige la implementación adecuada
         document.addEventListener('DOMContentLoaded', () => {
-            // No llamamos a 'inicializarCatalogo' ni 'iniciarCarrusel' aquí
-            // Solo cargamos el carrito.
-            cargarPaginaCarrito();
-            
-            // 'actualizarBadgeCarrito' ya se llama en el DOMContentLoaded de logica.js
-            // pero lo llamamos de nuevo por si acaso.
-            actualizarBadgeCarrito(); 
+            if (document.getElementById('cart-container')) {
+                renderCarritoPage();
+            } else if (document.getElementById('carrito-container')) {
+                // implementación alternativa antigua
+                cargarPaginaCarrito();
+            }
+            actualizarBadgeCarrito();
         });
