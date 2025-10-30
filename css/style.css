@@ -193,15 +193,7 @@
     justify-content: space-between;
 }
 
-/* Estado de hover */
-.game-card:hover .hover-details {
-    opacity: 1;
-    transform: scale(1.0); /* Se acerca al tamaño completo */
-}
 
-.game-card:hover .default-view {
-     opacity: 0; /* Oculta la vista predeterminada */
-}
 
 /* Estilos de precio */
 .old-price {

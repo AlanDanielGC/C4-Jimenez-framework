@@ -9,23 +9,27 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="catalogo-body text-white">
-
-    <header class="catalogo-header">
-        <div class="max-w-7xl mx-auto flex justify-between items-center px-4">
-            <h1 class="text-3xl font-bold text-white">
-                <span class="text-blue-500">C4</span>-Games
-            </h1>
-            <div class="flex items-center space-x-4">
-                <input type="text" placeholder="Buscar" class="input input-bordered input-sm w-full max-w-xs bg-gray-800 border-gray-700 text-white"/>
-                <div class="text-sm">Iniciar sesión | <a href="#" class="text-blue-400">Crear cuenta</a></div>
-            </div>
-        </div>
-    </header>
-
+<!-- Navbar -->
+  <div class="navbar bg-base-100 shadow-md">
+    <div class="navbar-start">
+      <a class="btn btn-ghost normal-case text-xl" href="index.html">C4-Games</a>
+    </div>
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="ofertas.html">Ofertas</a></li>
+      </ul>
+    </div>
+    <div class="navbar-end">
+      <a class="btn btn-ghost mr-2" href="login.html">Iniciar Sesión</a>
+<a class="btn btn-ghost" href="carrito.html">
+    Carrito
+    <span class="badge badge-sm badge-secondary">0</span>
+</a>
+    </div>
+  </div>
     <main class="catalogo-main-content">
-
-        <h2 class="catalogo-title py-6">Todas Las Ofertas</h2>
-        <p class="text-sm text-gray-400 mb-6">1-40 de 40 coincidencias</p>
         <div class="pagination-controls utilidad-alineacion">
  <div class="dropdown dropdown-end">
     <div tabindex="0" role="button" class="btn btn-sm bg-gray-800 border-gray-700 text-white" id="orden-actual-texto">

@@ -1,13 +1,17 @@
 // 1. Introducción al lenguaje JavaScript
-// Definición de variables y constantes
-const carritoTotal = document.querySelector('.badge');
-let carrito = [];
-
-// 2. Manejo del framework (DaisyUI/Tailwind a través de clases dinámicas)
-function actualizarInterfaz() {
-    carritoTotal.textContent = carrito.length;
+function actualizarBadgeCarrito() {
+    const carrito = obtenerCarrito();
+    // Busca el badge en el header
+    const carritoTotal = document.querySelector('.badge'); 
+    if (carritoTotal) {
+        carritoTotal.textContent = carrito.length;
+    }
 }
-
+// 2. Manejo del framework (Sin cambios)
+function actualizarInterfaz() {
+    // Esta función ahora es reemplazada por actualizarBadgeCarrito
+    actualizarBadgeCarrito();
+}
 // 3. Estructuras de control
 function filtrarJuegosPorPrecio(juegos, precioMaximo) {
     return juegos.filter(juego => juego.precio <= precioMaximo);
@@ -15,8 +19,8 @@ function filtrarJuegosPorPrecio(juegos, precioMaximo) {
 
 // 4. Manipulación de objetos
 class Juego {
-    constructor(id, titulo, precio, genero, imagen,descripcion) {
-        this.id = id;
+    constructor(idJuego, titulo, precio, genero, imagen,descripcion) {
+        this.idJuego = idJuego;
         this.titulo = titulo;
         this.precio = precio;
         this.genero = genero;
@@ -102,14 +106,22 @@ function cargarJuegos() {
     const juegosHTML = catalogoJuegos.map(juego => juego.crearElementoJuego()).join('');
     contenedor.innerHTML = juegosHTML;
 }
-
+// (MODIFICADA) Función agregarAlCarrito
 function agregarAlCarrito(idJuego) {
-    const juego = catalogoJuegos.find(j => j.id === idJuego);
+    const idJuegoNum = parseInt(idJuego, 10);
+    const juego = catalogoJuegos.find(j => j.id === idJuegoNum);
+    
     if (juego) {
-        carrito.push(juego);
-        actualizarInterfaz();
-        // Mostrar notificación usando DaisyUI
+        const carrito = obtenerCarrito();
+        carrito.push(juego); // Añadimos el objeto JUEGO completo
+        guardarCarrito(carrito);
+        
+        actualizarBadgeCarrito(); // Actualiza el número
+        
+        // La función de notificación que ya tenías
         mostrarNotificacion(`${juego.titulo} añadido al carrito`);
+    } else {
+        console.error(`No se encontró el juego con ID: ${idJuegoNum}`);
     }
 }
 
@@ -183,7 +195,8 @@ function setHeroToSlideIndex(index) {
 document.addEventListener('DOMContentLoaded', () => {
     cargarJuegos();
     iniciarCarrusel();
-
+    actualizarBadgeCarrito();
+agregarAlCarrito();
     // Inicializar el fondo del hero según el hash (o slide 1 por defecto)
     const initialIdx = getSlideIndexFromHash() || 1;
     setHeroToSlideIndex(initialIdx);
@@ -433,3 +446,85 @@ function ordenarJuegos(juegos) {
     });
     return juegosOrdenados;
 }
+/**
+         * Función para remover un item del carrito.
+         * Es llamada por el botón 'Quitar'
+         */
+        function removerItemDelCarrito(idJuego) {
+            const idJuegoNum = parseInt(idJuego, 10);
+            let carrito = obtenerCarrito(); // Función de logica.js
+            
+            // Filtramos el carrito para quitar el juego con el id
+            const nuevoCarrito = carrito.filter(juego => juego.id !== idJuegoNum);
+            
+            guardarCarrito(nuevoCarrito); // Función de logica.js
+            
+            // Volvemos a cargar la vista del carrito
+            cargarPaginaCarrito();
+            actualizarBadgeCarrito(); // Función de logica.js
+        }
+
+        /**
+         * Carga los items del carrito y calcula el total.
+         */
+        function cargarPaginaCarrito() {
+            const carrito = obtenerCarrito(); // Función de logica.js
+            const container = document.getElementById('carrito-container');
+            const totalContainer = document.getElementById('total-container');
+
+            container.innerHTML = ''; // Limpiamos el contenedor
+            totalContainer.innerHTML = ''; // Limpiamos el total
+
+            if (carrito.length === 0) {
+                container.innerHTML = '<p class="text-2xl text-gray-500">Tu carrito está vacío.</p>';
+                return;
+            }
+
+            let totalPagar = 0;
+
+            // Iteramos sobre los juegos en el carrito
+            carrito.forEach(juego => {
+                // Acumulamos el precio total
+                // 'juego.precio' ya es un número gracias a la Clase 'Juego'
+                totalPagar += juego.precio;
+
+                // Creamos el HTML para cada item
+                const itemHTML = `
+                    <div class="card card-side bg-base-300 shadow-xl flex items-center">
+                        <figure class="w-32 h-32 flex-shrink-0">
+                            <img src="${juego.imagen}" alt="${juego.titulo}" class="w-full h-full object-cover"/>
+                        </figure>
+                        <div class="card-body p-4">
+                            <h2 class="card-title">${juego.titulo}</h2>
+                            <p class="text-gray-400">${juego.genero}</p>
+                            <div class="card-actions justify-between items-center">
+                                <span class="text-xl font-bold">US$${juego.precio.toFixed(2)}</span>
+                                <button onclick="removerItemDelCarrito(${juego.id})" class="btn btn-error btn-sm">
+                                    Quitar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += itemHTML;
+            });
+
+            // Creamos el HTML para el total
+            const totalHTML = `
+                <div class="divider"></div>
+                <h2 class="text-3xl font-bold">Total: US$ ${totalPagar.toFixed(2)}</h2>
+                <button class="btn btn-primary btn-lg mt-4">Proceder al Pago</button>
+            `;
+            totalContainer.innerHTML = totalHTML;
+        }
+
+        // Event listener para cuando la página 'carrito.html' cargue
+        document.addEventListener('DOMContentLoaded', () => {
+            // No llamamos a 'inicializarCatalogo' ni 'iniciarCarrusel' aquí
+            // Solo cargamos el carrito.
+            cargarPaginaCarrito();
+            
+            // 'actualizarBadgeCarrito' ya se llama en el DOMContentLoaded de logica.js
+            // pero lo llamamos de nuevo por si acaso.
+            actualizarBadgeCarrito(); 
+        });
